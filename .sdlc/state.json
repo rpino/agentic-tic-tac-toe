@@ -3,7 +3,7 @@
   "project": "Tic tac toe game",
   "slug": "tic-tac-toe-game",
   "created": "2026-10-01T18:59:17-07:00",
-  "updated": "2026-10-01T21:16:49-07:00",
+  "updated": "2026-10-01T21:32:04-07:00",
   "approvers": {
     "product_owner": "Pino",
     "tech_lead": "Pino",
@@ -29,7 +29,7 @@
       "__tests__"
     ]
   },
-  "current_phase": "build",
+  "current_phase": "qa",
   "phases": {
     "discovery": {
       "status": "approved",
@@ -121,10 +121,14 @@
       "open_issues": []
     },
     "build": {
-      "status": "draft",
-      "artifacts": [],
-      "approved_by": null,
-      "approved_on": null,
+      "status": "approved",
+      "artifacts": [
+        "docs/05-build/build-log.md",
+        "tictactoe/",
+        "tests/"
+      ],
+      "approved_by": "Pino",
+      "approved_on": "2026-10-01",
       "open_issues": []
     },
     "qa": {
@@ -330,6 +334,17 @@
       "ts": "2026-10-01T21:16:49-07:00",
       "event": "status_draft",
       "phase": "build"
+    },
+    {
+      "ts": "2026-10-01T21:26:49-07:00",
+      "event": "status_in_review",
+      "phase": "build"
+    },
+    {
+      "ts": "2026-10-01T21:32:04-07:00",
+      "event": "approved",
+      "phase": "build",
+      "by": "Pino"
     }
   ]
 }
