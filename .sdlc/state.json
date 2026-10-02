@@ -3,7 +3,7 @@
   "project": "Tic tac toe game",
   "slug": "tic-tac-toe-game",
   "created": "2026-10-01T18:59:17-07:00",
-  "updated": "2026-10-01T22:01:09-07:00",
+  "updated": "2026-10-01T22:05:16-07:00",
   "approvers": {
     "product_owner": "Pino",
     "tech_lead": "Pino",
@@ -30,7 +30,7 @@
       "__tests__"
     ]
   },
-  "current_phase": "knowledge",
+  "current_phase": null,
   "phases": {
     "discovery": {
       "status": "approved",
@@ -213,13 +213,13 @@
       "open_issues": []
     },
     "knowledge": {
-      "status": "in_review",
+      "status": "approved",
       "artifacts": [
         "docs/10-knowledge/retro.md",
         "CLAUDE.md"
       ],
-      "approved_by": null,
-      "approved_on": null,
+      "approved_by": "Pino",
+      "approved_on": "2026-10-01",
       "open_issues": [
         {
           "id": "KNO-1",
@@ -621,6 +621,13 @@
       "ts": "2026-10-01T22:01:09-07:00",
       "event": "status_in_review",
       "phase": "knowledge"
+    },
+    {
+      "ts": "2026-10-01T22:05:16-07:00",
+      "event": "approved",
+      "phase": "knowledge",
+      "by": "Pino",
+      "note": "SR-1..SR-4 adopted; M-1, M-2 shipped in sdlc-core 0.1.1"
     }
   ]
 }
