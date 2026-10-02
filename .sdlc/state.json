@@ -3,7 +3,7 @@
   "project": "Tic tac toe game",
   "slug": "tic-tac-toe-game",
   "created": "2026-10-01T18:59:17-07:00",
-  "updated": "2026-10-01T21:48:07-07:00",
+  "updated": "2026-10-01T21:49:33-07:00",
   "approvers": {
     "product_owner": "Pino",
     "tech_lead": "Pino",
@@ -29,7 +29,7 @@
       "__tests__"
     ]
   },
-  "current_phase": "review",
+  "current_phase": "release",
   "phases": {
     "discovery": {
       "status": "approved",
@@ -167,24 +167,28 @@
       ]
     },
     "review": {
-      "status": "draft",
+      "status": "approved",
       "artifacts": [
         "docs/07-review/review-report.md"
       ],
-      "approved_by": null,
-      "approved_on": null,
+      "approved_by": "Pino",
+      "approved_on": "2026-10-01",
       "open_issues": [
         {
           "id": "REV-1",
           "text": "Design doc drift: add AC-5.4 row to design.md section 8 (one-line edit to an approved artifact) or leave as noted?",
           "raised": "2026-10-01",
-          "resolved": false
+          "resolved": true,
+          "resolution": "Pino: fix. AC-5.4 added to design.md section 8 and I/O conventions",
+          "resolved_on": "2026-10-01"
         },
         {
           "id": "REV-2",
           "text": "Optional Minor/Nit fixes (cli.py try/except split, loop readability, shared test helpers, .gitattributes): apply now or skip?",
           "raised": "2026-10-01",
-          "resolved": false
+          "resolved": true,
+          "resolution": "Pino: apply now. All optional fixes applied; 45/45 tests pass",
+          "resolved_on": "2026-10-01"
         }
       ]
     },
@@ -494,6 +498,29 @@
       "ts": "2026-10-01T21:48:07-07:00",
       "event": "status_draft",
       "phase": "review"
+    },
+    {
+      "ts": "2026-10-01T21:49:04-07:00",
+      "event": "issue_resolved",
+      "phase": "review",
+      "note": "REV-1: Pino: fix. AC-5.4 added to design.md section 8 and I/O conventions"
+    },
+    {
+      "ts": "2026-10-01T21:49:05-07:00",
+      "event": "issue_resolved",
+      "phase": "review",
+      "note": "REV-2: Pino: apply now. All optional fixes applied; 45/45 tests pass"
+    },
+    {
+      "ts": "2026-10-01T21:49:05-07:00",
+      "event": "status_in_review",
+      "phase": "review"
+    },
+    {
+      "ts": "2026-10-01T21:49:33-07:00",
+      "event": "approved",
+      "phase": "review",
+      "by": "Pino"
     }
   ]
 }

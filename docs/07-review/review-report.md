@@ -44,7 +44,7 @@ Security findings: **none Critical, High or Medium.** One Low (#10), accepted as
 ## Sign-off
 - [x] No open Blocker/Major findings
 - [x] No open Critical/High security findings
-- Approved by: ____ on ____
+- Approved by: Pino on 2026-10-01
 
 ## Re-review after fixes (branch `chore/review-fixes`)
 - Behaviour-preserving refactor only: all 45 tests pass, both through `discover` and module by module.
