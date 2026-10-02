@@ -1,0 +1,335 @@
+{
+  "schema_version": 1,
+  "project": "Tic tac toe game",
+  "slug": "tic-tac-toe-game",
+  "created": "2026-10-01T18:59:17-07:00",
+  "updated": "2026-10-01T21:16:49-07:00",
+  "approvers": {
+    "product_owner": "Pino",
+    "tech_lead": "Pino",
+    "qa_lead": "Pino",
+    "team": "Pino"
+  },
+  "settings": {
+    "code_paths": [
+      "src/",
+      "app/",
+      "lib/",
+      "services/",
+      "packages/",
+      "api/",
+      "web/",
+      "tests/",
+      "test/"
+    ],
+    "require_tests_on_commit": true,
+    "test_markers": [
+      "test",
+      "spec",
+      "__tests__"
+    ]
+  },
+  "current_phase": "build",
+  "phases": {
+    "discovery": {
+      "status": "approved",
+      "artifacts": [
+        "docs/01-discovery/problem-brief.md"
+      ],
+      "approved_by": "Pino",
+      "approved_on": "2026-10-01",
+      "open_issues": [
+        {
+          "id": "DIS-1",
+          "text": "Interface: confirm terminal hot-seat (two humans, one keyboard) as the lowest-cost option",
+          "raised": "2026-10-01",
+          "resolved": true,
+          "resolution": "Confirmed by Pino: terminal hot-seat, two humans on one keyboard",
+          "resolved_on": "2026-10-01"
+        }
+      ]
+    },
+    "requirements": {
+      "status": "approved",
+      "artifacts": [
+        "docs/02-requirements/requirements.md"
+      ],
+      "approved_by": "Pino",
+      "approved_on": "2026-10-01",
+      "open_issues": [
+        {
+          "id": "REQ-1",
+          "text": "Confirm X always moves first (BR-1)",
+          "raised": "2026-10-01",
+          "resolved": true,
+          "resolution": "Pino: X always moves first",
+          "resolved_on": "2026-10-01"
+        },
+        {
+          "id": "REQ-2",
+          "text": "Confirm one round per run, no play-again prompt (BR-3)",
+          "raised": "2026-10-01",
+          "resolved": true,
+          "resolution": "Pino: add play-again prompt; added US-6 (AC-6.1-6.4)",
+          "resolved_on": "2026-10-01"
+        },
+        {
+          "id": "REQ-3",
+          "text": "Keep US-5 (quit) as Should, or cut it?",
+          "raised": "2026-10-01",
+          "resolved": true,
+          "resolution": "Pino: keep US-5 quit as Should",
+          "resolved_on": "2026-10-01"
+        }
+      ]
+    },
+    "design": {
+      "status": "approved",
+      "artifacts": [
+        "docs/03-design/design.md",
+        "docs/03-design/adr/ADR-001-pure-core-thin-cli.md",
+        "docs/03-design/adr/ADR-002-unittest.md"
+      ],
+      "approved_by": "Pino",
+      "approved_on": "2026-10-01",
+      "open_issues": [
+        {
+          "id": "DES-1",
+          "text": "Package layout: keep src/tictactoe (needs PYTHONPATH=src) or flat tictactoe/ at repo root (zero setup; add tictactoe/ to gated code paths)?",
+          "raised": "2026-10-01",
+          "resolved": true,
+          "resolution": "Pino: flat tictactoe/ package. Gate path not extendable via script; enforced by convention",
+          "resolved_on": "2026-10-01"
+        },
+        {
+          "id": "DES-2",
+          "text": "Windows Ctrl+C: add KeyboardInterrupt guard in __main__.py (~3 lines) or rely on manual QA check only?",
+          "raised": "2026-10-01",
+          "resolved": true,
+          "resolution": "Pino: add KeyboardInterrupt guard in __main__.py",
+          "resolved_on": "2026-10-01"
+        }
+      ]
+    },
+    "planning": {
+      "status": "approved",
+      "artifacts": [
+        "docs/04-planning/tasks.md"
+      ],
+      "approved_by": "Pino",
+      "approved_on": "2026-10-01",
+      "open_issues": []
+    },
+    "build": {
+      "status": "draft",
+      "artifacts": [],
+      "approved_by": null,
+      "approved_on": null,
+      "open_issues": []
+    },
+    "qa": {
+      "status": "not_started",
+      "artifacts": [],
+      "approved_by": null,
+      "approved_on": null,
+      "open_issues": []
+    },
+    "review": {
+      "status": "not_started",
+      "artifacts": [],
+      "approved_by": null,
+      "approved_on": null,
+      "open_issues": []
+    },
+    "release": {
+      "status": "not_started",
+      "artifacts": [],
+      "approved_by": null,
+      "approved_on": null,
+      "open_issues": []
+    },
+    "operate": {
+      "status": "not_started",
+      "artifacts": [],
+      "approved_by": null,
+      "approved_on": null,
+      "open_issues": []
+    },
+    "knowledge": {
+      "status": "not_started",
+      "artifacts": [],
+      "approved_by": null,
+      "approved_on": null,
+      "open_issues": []
+    }
+  },
+  "history": [
+    {
+      "ts": "2026-10-01T18:59:17-07:00",
+      "event": "project_created",
+      "by": "Pino",
+      "note": "Tic tac toe game"
+    },
+    {
+      "ts": "2026-10-01T18:59:29-07:00",
+      "event": "status_draft",
+      "phase": "discovery"
+    },
+    {
+      "ts": "2026-10-01T20:08:20-07:00",
+      "event": "issue_added",
+      "phase": "discovery",
+      "note": "DIS-1: Interface: confirm terminal hot-seat (two humans, one keyboard) as the lowest-cost option"
+    },
+    {
+      "ts": "2026-10-01T20:08:20-07:00",
+      "event": "status_in_review",
+      "phase": "discovery"
+    },
+    {
+      "ts": "2026-10-01T20:13:13-07:00",
+      "event": "issue_resolved",
+      "phase": "discovery",
+      "note": "DIS-1: Confirmed by Pino: terminal hot-seat, two humans on one keyboard"
+    },
+    {
+      "ts": "2026-10-01T20:13:13-07:00",
+      "event": "approved",
+      "phase": "discovery",
+      "by": "Pino"
+    },
+    {
+      "ts": "2026-10-01T20:13:38-07:00",
+      "event": "status_draft",
+      "phase": "requirements"
+    },
+    {
+      "ts": "2026-10-01T20:14:56-07:00",
+      "event": "issue_added",
+      "phase": "requirements",
+      "note": "REQ-1: Confirm X always moves first (BR-1)"
+    },
+    {
+      "ts": "2026-10-01T20:14:56-07:00",
+      "event": "issue_added",
+      "phase": "requirements",
+      "note": "REQ-2: Confirm one round per run, no play-again prompt (BR-3)"
+    },
+    {
+      "ts": "2026-10-01T20:14:56-07:00",
+      "event": "issue_added",
+      "phase": "requirements",
+      "note": "REQ-3: Keep US-5 (quit) as Should, or cut it?"
+    },
+    {
+      "ts": "2026-10-01T20:14:56-07:00",
+      "event": "status_in_review",
+      "phase": "requirements"
+    },
+    {
+      "ts": "2026-10-01T20:23:20-07:00",
+      "event": "status_draft",
+      "phase": "requirements"
+    },
+    {
+      "ts": "2026-10-01T20:23:44-07:00",
+      "event": "issue_resolved",
+      "phase": "requirements",
+      "note": "REQ-1: Pino: X always moves first"
+    },
+    {
+      "ts": "2026-10-01T20:23:45-07:00",
+      "event": "issue_resolved",
+      "phase": "requirements",
+      "note": "REQ-2: Pino: add play-again prompt; added US-6 (AC-6.1-6.4)"
+    },
+    {
+      "ts": "2026-10-01T20:23:45-07:00",
+      "event": "issue_resolved",
+      "phase": "requirements",
+      "note": "REQ-3: Pino: keep US-5 quit as Should"
+    },
+    {
+      "ts": "2026-10-01T20:23:45-07:00",
+      "event": "status_in_review",
+      "phase": "requirements"
+    },
+    {
+      "ts": "2026-10-01T20:58:54-07:00",
+      "event": "approved",
+      "phase": "requirements",
+      "by": "Pino"
+    },
+    {
+      "ts": "2026-10-01T20:59:33-07:00",
+      "event": "status_draft",
+      "phase": "design"
+    },
+    {
+      "ts": "2026-10-01T21:01:14-07:00",
+      "event": "issue_added",
+      "phase": "design",
+      "note": "DES-1: Package layout: keep src/tictactoe (needs PYTHONPATH=src) or flat tictactoe/ at repo root (zero setup; add tictactoe/ to gated code paths)?"
+    },
+    {
+      "ts": "2026-10-01T21:01:14-07:00",
+      "event": "issue_added",
+      "phase": "design",
+      "note": "DES-2: Windows Ctrl+C: add KeyboardInterrupt guard in __main__.py (~3 lines) or rely on manual QA check only?"
+    },
+    {
+      "ts": "2026-10-01T21:01:15-07:00",
+      "event": "status_in_review",
+      "phase": "design"
+    },
+    {
+      "ts": "2026-10-01T21:08:00-07:00",
+      "event": "status_draft",
+      "phase": "design"
+    },
+    {
+      "ts": "2026-10-01T21:08:30-07:00",
+      "event": "issue_resolved",
+      "phase": "design",
+      "note": "DES-1: Pino: flat tictactoe/ package. Gate path not extendable via script; enforced by convention"
+    },
+    {
+      "ts": "2026-10-01T21:08:30-07:00",
+      "event": "issue_resolved",
+      "phase": "design",
+      "note": "DES-2: Pino: add KeyboardInterrupt guard in __main__.py"
+    },
+    {
+      "ts": "2026-10-01T21:08:31-07:00",
+      "event": "status_in_review",
+      "phase": "design"
+    },
+    {
+      "ts": "2026-10-01T21:09:08-07:00",
+      "event": "approved",
+      "phase": "design",
+      "by": "Pino"
+    },
+    {
+      "ts": "2026-10-01T21:09:51-07:00",
+      "event": "status_draft",
+      "phase": "planning"
+    },
+    {
+      "ts": "2026-10-01T21:10:21-07:00",
+      "event": "status_in_review",
+      "phase": "planning"
+    },
+    {
+      "ts": "2026-10-01T21:13:57-07:00",
+      "event": "approved",
+      "phase": "planning",
+      "by": "Pino"
+    },
+    {
+      "ts": "2026-10-01T21:16:49-07:00",
+      "event": "status_draft",
+      "phase": "build"
+    }
+  ]
+}
