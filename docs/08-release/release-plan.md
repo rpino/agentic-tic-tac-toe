@@ -34,8 +34,8 @@ There's one stage: tag the release and run it locally. With a single player-oper
 - [x] QA approved: 45/45 automated tests and M-1 to M-5 manual checks pass
 - [x] Review approved: no open findings; security checklist has no Critical, High or Medium findings
 - [x] Release notes written (release-notes.md)
-- [ ] On go: `python -m unittest discover tests` passes on `master` and is run once more just before tagging
-- [ ] On go: `git tag -a v1.0.0 -m "Tic tac toe v1.0.0"`
+- [x] On go: `python -m unittest discover tests` passes on `master` and is run once more just before tagging
+- [x] On go: `git tag -a v1.0.0 -m "Tic tac toe v1.0.0"`
 
 ## Monitoring
 - **Health:** none at runtime (design §6: no logs or metrics for a local toy). The post-release check is a smoke run: `python -m tictactoe`, play one game, quit.
@@ -46,4 +46,4 @@ There's one stage: tag the release and run it locally. With a single player-oper
 2. There's no data, so a rollback can't lose anything. Pino can trigger it.
 
 ## Go / No-go
-- Decision: ____ by ____ on ____ (recorded by `/sdlc-core:approve release`)
+- Decision: **GO** by Pino on 2026-10-01
