@@ -17,7 +17,7 @@ Estimates are the agent's guess (S = under 1 hour with an agent). Owner: Pino, p
 |---|---|---|---|---|---|---|
 | T-1 | Rules core (`game.py`) | AC-1.1, AC-2.3, AC-3.1, AC-3.2, AC-3.3, AC-4.1, AC-4.2, AC-4.3 | — | S | Pino | done (in review) |
 | T-2 | Single game CLI (`cli.play_game`) | AC-1.2, AC-2.1, AC-2.2, AC-3.1, AC-3.2, AC-4.1, AC-4.2, AC-5.1 | T-1 | S | Pino | done (in review) |
-| T-3 | Session loop, play again and exit handling (`cli.main`, `ask_play_again`, `__main__.py`) | AC-4.4, AC-5.2, AC-5.3, AC-6.1, AC-6.2, AC-6.3, AC-6.4 | T-2 | S | Pino | todo |
+| T-3 | Session loop, play again and exit handling (`cli.main`, `ask_play_again`, `__main__.py`) | AC-4.4, AC-5.2, AC-5.3, AC-6.1, AC-6.2, AC-6.3, AC-6.4 | T-2 | S | Pino | done (in review) |
 
 ### T-1: Rules core
 - **What:** `tictactoe/__init__.py` and `tictactoe/game.py`, with `new_board`, `parse_cell`, `apply_move`, `CellTaken`, `outcome`, `other` and `render`, exactly as in design §3.3. No I/O.

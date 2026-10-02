@@ -12,6 +12,9 @@ CELL_TAKEN = "Cell {n} is taken. Choose another."
 WIN = "Player {player} wins!"
 DRAW = "It's a draw!"
 QUIT_KEYS = ("q", "Q")
+PLAY_AGAIN_PROMPT = "Play again? (y/n): "
+PLAY_AGAIN_INVALID = "Please enter y or n."
+GOODBYE = "Goodbye."
 
 
 def play_game(input_fn, output_fn):
@@ -41,3 +44,28 @@ def play_game(input_fn, output_fn):
             output_fn(WIN.format(player=result))
             return "over"
         player = game.other(player)
+
+
+def ask_play_again(input_fn, output_fn):
+    """Return True for y/Y, False for n/N; re-prompt on anything else (AC-6.1 to AC-6.4)."""
+    while True:
+        text = input_fn(PLAY_AGAIN_PROMPT).strip()
+        if text in ("y", "Y"):
+            return True
+        if text in ("n", "N"):
+            return False
+        output_fn(PLAY_AGAIN_INVALID)
+
+
+def main(input_fn=input, output_fn=print):
+    """Run games until a player quits or declines to play again. Always returns 0.
+
+    End of input and Ctrl+C at any prompt also end the session (AC-5.2, AC-5.3).
+    """
+    try:
+        while play_game(input_fn, output_fn) == "over" and ask_play_again(input_fn, output_fn):
+            pass
+    except (EOFError, KeyboardInterrupt):
+        pass
+    output_fn(GOODBYE)
+    return 0

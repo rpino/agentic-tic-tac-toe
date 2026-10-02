@@ -102,5 +102,92 @@ class TestPlayGame(unittest.TestCase):
                 self.assertEqual(result, "quit")
 
 
+X_WINS = ["1", "4", "2", "5", "3"]
+PLAY_AGAIN = "Play again? (y/n): "
+
+
+def run_main(replies):
+    io = FakeIO(replies)
+    code = cli.main(io.input_fn, io.output_fn)
+    return code, io
+
+
+class TestMain(unittest.TestCase):
+    def test_ac_4_4_game_end_goes_to_play_again_prompt(self):
+        _, io = run_main(X_WINS + ["n"])
+        self.assertEqual(io.prompts[-1], PLAY_AGAIN)
+        self.assertEqual(len(io.prompts), len(X_WINS) + 1)
+
+    def test_ac_5_1_q_prints_goodbye_and_returns_0(self):
+        code, io = run_main(["q"])
+        self.assertEqual(code, 0)
+        self.assertEqual(io.output[-1], "Goodbye.")
+
+    def test_ac_5_2_eof_at_either_prompt(self):
+        for replies in ([EOFError()], X_WINS + [EOFError()]):
+            with self.subTest(at=len(replies)):
+                code, io = run_main(replies)
+                self.assertEqual(code, 0)
+                self.assertEqual(io.output[-1], "Goodbye.")
+
+    def test_ac_5_3_ctrl_c_at_either_prompt(self):
+        for replies in ([KeyboardInterrupt()], X_WINS + [KeyboardInterrupt()]):
+            with self.subTest(at=len(replies)):
+                code, io = run_main(replies)
+                self.assertEqual(code, 0)
+                self.assertEqual(io.output[-1], "Goodbye.")
+
+    def test_ac_6_1_exact_play_again_prompt(self):
+        _, io = run_main(X_WINS + ["n"])
+        self.assertEqual(io.prompts[-1], "Play again? (y/n): ")
+
+    def test_ac_6_2_yes_starts_new_game_with_empty_board_and_x(self):
+        for reply in ["y", "Y", " y "]:
+            with self.subTest(reply=reply):
+                _, io = run_main(X_WINS + [reply, "q"])
+                self.assertEqual(io.prompts[-1], prompt_for("X"))
+                self.assertEqual(io.output[-2], game.render(game.new_board()))
+
+    def test_ac_6_3_no_prints_goodbye_and_returns_0(self):
+        for reply in ["n", "N", " n "]:
+            with self.subTest(reply=reply):
+                code, io = run_main(X_WINS + [reply])
+                self.assertEqual(code, 0)
+                self.assertEqual(io.output[-1], "Goodbye.")
+
+    def test_ac_6_4_other_input_repeats_prompt(self):
+        _, io = run_main(X_WINS + ["maybe", "q", "", "n"])
+        self.assertEqual(io.output[-4:-1], ["Please enter y or n."] * 3)
+        self.assertEqual(io.prompts[-4:], [PLAY_AGAIN] * 4)
+
+
+class TestEntryPoint(unittest.TestCase):
+    """Smoke test: the real program via python -m tictactoe."""
+
+    def run_program(self, stdin_text):
+        import os
+        import subprocess
+        import sys
+
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        return subprocess.run(
+            [sys.executable, "-m", "tictactoe"],
+            input=stdin_text, capture_output=True, text=True, cwd=root, timeout=10,
+        )
+
+    def test_full_game_then_quit(self):
+        proc = self.run_program("1\n4\n2\n5\n3\nn\n")
+        self.assertEqual(proc.returncode, 0)
+        self.assertIn("Player X wins!", proc.stdout)
+        self.assertIn("Goodbye.", proc.stdout)
+        self.assertNotIn("Traceback", proc.stderr)
+
+    def test_ac_5_2_eof_exits_cleanly(self):
+        proc = self.run_program("")
+        self.assertEqual(proc.returncode, 0)
+        self.assertIn("Goodbye.", proc.stdout)
+        self.assertNotIn("Traceback", proc.stderr)
+
+
 if __name__ == "__main__":
     unittest.main()
