@@ -3,7 +3,7 @@
   "project": "Tic tac toe game",
   "slug": "tic-tac-toe-game",
   "created": "2026-10-01T18:59:17-07:00",
-  "updated": "2026-10-01T21:55:41-07:00",
+  "updated": "2026-10-01T22:01:09-07:00",
   "approvers": {
     "product_owner": "Pino",
     "tech_lead": "Pino",
@@ -20,7 +20,8 @@
       "api/",
       "web/",
       "tests/",
-      "test/"
+      "test/",
+      "tictactoe/"
     ],
     "require_tests_on_commit": true,
     "test_markers": [
@@ -212,11 +213,31 @@
       "open_issues": []
     },
     "knowledge": {
-      "status": "not_started",
-      "artifacts": [],
+      "status": "in_review",
+      "artifacts": [
+        "docs/10-knowledge/retro.md",
+        "CLAUDE.md"
+      ],
       "approved_by": null,
       "approved_on": null,
-      "open_issues": []
+      "open_issues": [
+        {
+          "id": "KNO-1",
+          "text": "Which proposed standing rules (SR-1..SR-4) to adopt into CLAUDE.md?",
+          "raised": "2026-10-01",
+          "resolved": true,
+          "resolution": "Pino: adopt all four (SR-1..SR-4); written to CLAUDE.md",
+          "resolved_on": "2026-10-01"
+        },
+        {
+          "id": "KNO-2",
+          "text": "Implement marketplace improvements M-1..M-4 in the marketplace repo (now, later, or no)?",
+          "raised": "2026-10-01",
+          "resolved": true,
+          "resolution": "Pino: M-1 and M-2 now (done in marketplace repo, uncommitted); M-3, M-4 not now",
+          "resolved_on": "2026-10-01"
+        }
+      ]
     }
   },
   "history": [
@@ -560,6 +581,46 @@
       "phase": "operate",
       "by": "Pino",
       "note": "v1.0.0 stable, no incidents"
+    },
+    {
+      "ts": "2026-10-01T21:56:24-07:00",
+      "event": "status_draft",
+      "phase": "knowledge"
+    },
+    {
+      "ts": "2026-10-01T21:57:07-07:00",
+      "event": "issue_added",
+      "phase": "knowledge",
+      "note": "KNO-1: Which proposed standing rules (SR-1..SR-4) to adopt into CLAUDE.md?"
+    },
+    {
+      "ts": "2026-10-01T21:57:07-07:00",
+      "event": "issue_added",
+      "phase": "knowledge",
+      "note": "KNO-2: Implement marketplace improvements M-1..M-4 in the marketplace repo (now, later, or no)?"
+    },
+    {
+      "ts": "2026-10-01T22:00:41-07:00",
+      "event": "settings_changed",
+      "by": "Pino",
+      "note": "add-code-path tictactoe/"
+    },
+    {
+      "ts": "2026-10-01T22:01:09-07:00",
+      "event": "issue_resolved",
+      "phase": "knowledge",
+      "note": "KNO-1: Pino: adopt all four (SR-1..SR-4); written to CLAUDE.md"
+    },
+    {
+      "ts": "2026-10-01T22:01:09-07:00",
+      "event": "issue_resolved",
+      "phase": "knowledge",
+      "note": "KNO-2: Pino: M-1 and M-2 now (done in marketplace repo, uncommitted); M-3, M-4 not now"
+    },
+    {
+      "ts": "2026-10-01T22:01:09-07:00",
+      "event": "status_in_review",
+      "phase": "knowledge"
     }
   ]
 }

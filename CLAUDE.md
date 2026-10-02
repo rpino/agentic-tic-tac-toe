@@ -18,3 +18,7 @@ This project follows the **Agentic SDLC** process (sdlc-core plugin).
 
 ## Standing rules learned on this project
 <!-- sdlc-knowledge:knowledge-updater appends lessons here after each retro -->
+- Every AC that specifies exact terminal output also states line boundaries: what happens to the prompt line when a message follows it. (Retro SR-1; QA GAP-1 → AC-5.4)
+- Every CLI user flow has at least one end-to-end test that asserts the exact full stdout of the real program, not substrings. (Retro SR-2; QA TC-24)
+- Run `python -m unittest discover tests` and get a pass before every commit. (Retro SR-3)
+- Commit `.sdlc/state.json` after each approval, before any `git checkout` or merge. (Retro SR-4; QA approval branch slip)
