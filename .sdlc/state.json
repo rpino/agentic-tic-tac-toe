@@ -3,7 +3,7 @@
   "project": "Tic tac toe game",
   "slug": "tic-tac-toe-game",
   "created": "2026-10-01T18:59:17-07:00",
-  "updated": "2026-10-01T21:42:55-07:00",
+  "updated": "2026-10-01T21:44:27-07:00",
   "approvers": {
     "product_owner": "Pino",
     "tech_lead": "Pino",
@@ -29,7 +29,7 @@
       "__tests__"
     ]
   },
-  "current_phase": "qa",
+  "current_phase": "review",
   "phases": {
     "discovery": {
       "status": "approved",
@@ -140,19 +140,21 @@
       "open_issues": []
     },
     "qa": {
-      "status": "draft",
+      "status": "approved",
       "artifacts": [
         "docs/06-qa/test-cases.md",
         "docs/06-qa/test-report.md"
       ],
-      "approved_by": null,
-      "approved_on": null,
+      "approved_by": "Pino",
+      "approved_on": "2026-10-01",
       "open_issues": [
         {
           "id": "QA-1",
           "text": "GAP-1: after Ctrl+D/Ctrl+Z or Ctrl+C, 'Goodbye.' prints on the same line as the prompt. Accept as-is, or reopen Requirements to require it on its own line?",
           "raised": "2026-10-01",
-          "resolved": false
+          "resolved": true,
+          "resolution": "Pino: fix it. REQ-4 -> AC-5.4 added (req v0.2, re-approved); fixed in cli.main; TC-29 passes",
+          "resolved_on": "2026-10-01"
         },
         {
           "id": "QA-2",
@@ -433,6 +435,23 @@
       "ts": "2026-10-01T21:42:55-07:00",
       "event": "status_draft",
       "phase": "qa"
+    },
+    {
+      "ts": "2026-10-01T21:43:49-07:00",
+      "event": "issue_resolved",
+      "phase": "qa",
+      "note": "QA-1: Pino: fix it. REQ-4 -> AC-5.4 added (req v0.2, re-approved); fixed in cli.main; TC-29 passes"
+    },
+    {
+      "ts": "2026-10-01T21:43:50-07:00",
+      "event": "status_in_review",
+      "phase": "qa"
+    },
+    {
+      "ts": "2026-10-01T21:44:27-07:00",
+      "event": "approved",
+      "phase": "qa",
+      "by": "Pino"
     }
   ]
 }
