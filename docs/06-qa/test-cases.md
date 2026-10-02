@@ -33,23 +33,24 @@ Levels: **U** = unit (`tests/test_game.py`), **F** = functional, through `cli` w
 | TC-26 | NFR-1 | S | Collect the package's imports | Standard library only | `test_tc_nfr_1_stdlib_only` | Pass |
 | TC-27 | NFR-3 | S | Imports and calls | No socket, os, subprocess or urllib imports; no `open()` | `test_tc_nfr_3_no_network_file_or_os_access` | Pass |
 | TC-28 | NFR-1 | S | Parse the source with Python 3.10 grammar | Parses | `test_tc_nfr_1_parses_as_python_3_10` | Pass (static check; only 3.14 installed) |
-| — | NFR-2 | — | This table | Every AC has at least one automated TC | — | Pass (21/21) |
+| TC-29 | AC-5.4 | F, E | End of input or Ctrl+C at either prompt; `q` and `n` as controls; empty stdin to the real program | Blank line, then `Goodbye.`; no blank line after q/n; real stdout ends with the prompt, a newline, then `Goodbye.` | `test_ac_5_4_*` (3 tests) | Pass |
+| — | NFR-2 | — | This table | Every AC has at least one automated TC | — | Pass (22/22) |
 
 ## Manual (real terminal; for Pino to run, about 5 minutes)
 Run `python -m tictactoe` from `C:\Users\deadc\Projects\tic-tac-toe`.
 
 | TC | AC | Steps | Expected | Result |
 |---|---|---|---|---|
-| M-1 | AC-1.1 to 4.2 | Play a full game to a win, typing moves | Board lines up; prompts sit on the same line as your cursor; win message shown | Pending |
-| M-2 | AC-5.3 | Press Ctrl+C at a move prompt | `Goodbye.`, no traceback; `echo $LASTEXITCODE` → 0 | Pending |
-| M-3 | AC-5.3 | Finish a game, then press Ctrl+C at `Play again?` | Same as M-2 | Pending |
-| M-4 | AC-5.2 | Press Ctrl+Z then Enter at a move prompt | `Goodbye.`, exit 0 | Pending |
-| M-5 | AC-6.2 | Finish a game, answer `y`, play a few moves | Fresh board; X moves first | Pending |
+| M-1 | AC-1.1 to 4.2 | Play a full game to a win, typing moves | Board lines up; prompts sit on the same line as your cursor; win message shown | Pass (Pino) |
+| M-2 | AC-5.3 | Press Ctrl+C at a move prompt | `Goodbye.`, no traceback; `echo $LASTEXITCODE` → 0 | Pass (Pino) |
+| M-3 | AC-5.3 | Finish a game, then press Ctrl+C at `Play again?` | Same as M-2 | Pass (Pino) |
+| M-4 | AC-5.2 | Press Ctrl+Z then Enter at a move prompt | `Goodbye.`, exit 0 | Pass (Pino) |
+| M-5 | AC-6.2 | Finish a game, answer `y`, play a few moves | Fresh board; X moves first | Pass (Pino) |
 
 ## Gaps found (not covered by any AC)
 | Gap | Scenario | Raised to PO as |
 |---|---|---|
-| GAP-1 | After Ctrl+D/Ctrl+Z or Ctrl+C at a prompt, `Goodbye.` prints on the **same line** as the prompt (`Player X, choose a cell (1-9) or q: Goodbye.`). AC-5.2 and AC-5.3 only say "print Goodbye." | QA-1 |
+| GAP-1 | After Ctrl+D/Ctrl+Z or Ctrl+C at a prompt, `Goodbye.` printed on the same line as the prompt. | QA-1 → REQ-4 → **AC-5.4** added (v0.2); fixed in `cli.main`; covered by TC-29 |
 
 ## Defects
 None found against the approved ACs.

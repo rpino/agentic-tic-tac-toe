@@ -57,6 +57,45 @@ class TestMultiGame(unittest.TestCase):
         self.assertEqual(output[-1], "Goodbye.")
 
 
+class TestGoodbyeOwnLine(unittest.TestCase):
+    """AC-5.4 (from QA GAP-1): after EOF/Ctrl+C, Goodbye. is on its own line."""
+
+    def run_main(self, replies):
+        replies = list(replies)
+        output = []
+
+        def fake_input(prompt):
+            reply = replies.pop(0)
+            if isinstance(reply, BaseException):
+                raise reply
+            return reply
+
+        code = cli.main(fake_input, output.append)
+        return code, output
+
+    def test_ac_5_4_newline_before_goodbye_on_eof_or_ctrl_c(self):
+        x_wins = ["1", "4", "2", "5", "3"]
+        for replies in ([EOFError()], [KeyboardInterrupt()],
+                        x_wins + [EOFError()], x_wins + [KeyboardInterrupt()]):
+            with self.subTest(replies=replies):
+                code, output = self.run_main(replies)
+                self.assertEqual(code, 0)
+                self.assertEqual(output[-2:], ["", "Goodbye."])
+
+    def test_ac_5_4_no_extra_blank_line_after_q_or_n(self):
+        # The player pressed Enter, so the cursor is already on a new line.
+        for replies in (["q"], ["1", "4", "2", "5", "3", "n"]):
+            with self.subTest(replies=replies):
+                _, output = self.run_main(replies)
+                self.assertEqual(output[-1], "Goodbye.")
+                self.assertNotEqual(output[-2], "")
+
+    def test_ac_5_4_real_program_eof(self):
+        proc = run_program("")
+        self.assertTrue(proc.stdout.endswith(cli.MOVE_PROMPT.format(player="X") + "\nGoodbye.\n"),
+                        repr(proc.stdout[-60:]))
+
+
 class TestNonFunctional(unittest.TestCase):
     def imported_modules(self):
         names = set()

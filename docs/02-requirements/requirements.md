@@ -4,7 +4,7 @@
 |---|---|
 | Source brief | docs/01-discovery/problem-brief.md |
 | Product Owner | Pino |
-| Version / date | v0.1 — 2026-10-01 |
+| Version / date | v0.2 — 2026-10-01 (REQ-4: AC-5.4 added) |
 | Status | In review |
 
 ## 1. Summary
@@ -56,9 +56,10 @@ As a **player**, I want **to quit mid-game** so that **I don't have to finish or
 
 **Acceptance criteria**
 - **AC-5.1** WHEN a player enters "q" or "Q" at the move prompt THE SYSTEM SHALL print "Goodbye." and exit with status 0.
-- *AC-5.2 and AC-5.3 apply at both the move prompt and the play-again prompt.*
+- *AC-5.2, AC-5.3 and AC-5.4 apply at both the move prompt and the play-again prompt.*
 - **AC-5.2** IF the input stream ends (end-of-file: Ctrl+D on macOS/Linux, Ctrl+Z then Enter on Windows) THEN THE SYSTEM SHALL print "Goodbye." and exit with status 0 without a traceback.
 - **AC-5.3** IF the player interrupts with Ctrl+C THEN THE SYSTEM SHALL print "Goodbye." and exit with status 0 without a traceback.
+- **AC-5.4** WHEN "Goodbye." is printed because of AC-5.2 or AC-5.3 THE SYSTEM SHALL print it on its own line, never on the same line as the prompt.
 
 ### US-6: Play again · Priority: Should · Traces to: PO decision REQ-2 (2026-10-01)
 As a **player**, I want **to start a new game after one ends** so that **we can keep playing without restarting the program**.
@@ -95,6 +96,7 @@ As a **player**, I want **to start a new game after one ends** so that **we can 
 - [x] Q1 (REQ-1): X always moves first — confirmed by Pino.
 - [x] Q2 (REQ-2): Add a "play again?" prompt — decided by Pino; added as US-6.
 - [x] Q3 (REQ-3): Keep US-5 (quit) as Should — confirmed by Pino.
+- [x] Q4 (REQ-4, from QA GAP-1): "Goodbye." must appear on its own line after end-of-input or Ctrl+C. Decided by Pino; added AC-5.4.
 
 ## 7. Traceability
 | AC | Story | Brief metric / section |
@@ -103,6 +105,6 @@ As a **player**, I want **to start a new game after one ends** so that **we can 
 | AC-2.1 – AC-2.3 | US-2 | §5 metric 2, §7 |
 | AC-3.1 – AC-3.3 | US-3 | §7 (input validation) |
 | AC-4.1 – AC-4.4 | US-4 | §5 metric 2, §7 (win/draw) |
-| AC-5.1 – AC-5.3 | US-5 | §6 |
+| AC-5.1 – AC-5.4 | US-5 | §6 (AC-5.4 from QA GAP-1) |
 | AC-6.1 – AC-6.4 | US-6 | PO decision REQ-2 |
 | All | — | §5 metric 3 (100% AC test coverage, NFR-2) |

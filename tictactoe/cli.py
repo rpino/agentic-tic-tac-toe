@@ -66,6 +66,7 @@ def main(input_fn=input, output_fn=print):
         while play_game(input_fn, output_fn) == "over" and ask_play_again(input_fn, output_fn):
             pass
     except (EOFError, KeyboardInterrupt):
-        pass
+        # The cursor is still on the prompt line, so end it first (AC-5.4).
+        output_fn("")
     output_fn(GOODBYE)
     return 0

@@ -3,7 +3,7 @@
   "project": "Tic tac toe game",
   "slug": "tic-tac-toe-game",
   "created": "2026-10-01T18:59:17-07:00",
-  "updated": "2026-10-01T21:36:26-07:00",
+  "updated": "2026-10-01T21:42:55-07:00",
   "approvers": {
     "product_owner": "Pino",
     "tech_lead": "Pino",
@@ -80,6 +80,14 @@
           "resolved": true,
           "resolution": "Pino: keep US-5 quit as Should",
           "resolved_on": "2026-10-01"
+        },
+        {
+          "id": "REQ-4",
+          "text": "GAP-1 (QA-1): PO decided 'Goodbye.' must appear on its own line after Ctrl+D/Ctrl+Z or Ctrl+C at a prompt",
+          "raised": "2026-10-01",
+          "resolved": true,
+          "resolution": "Pino: fix it. Added AC-5.4 (Goodbye on its own line after EOF/Ctrl+C)",
+          "resolved_on": "2026-10-01"
         }
       ]
     },
@@ -133,10 +141,28 @@
     },
     "qa": {
       "status": "draft",
-      "artifacts": [],
+      "artifacts": [
+        "docs/06-qa/test-cases.md",
+        "docs/06-qa/test-report.md"
+      ],
       "approved_by": null,
       "approved_on": null,
-      "open_issues": []
+      "open_issues": [
+        {
+          "id": "QA-1",
+          "text": "GAP-1: after Ctrl+D/Ctrl+Z or Ctrl+C, 'Goodbye.' prints on the same line as the prompt. Accept as-is, or reopen Requirements to require it on its own line?",
+          "raised": "2026-10-01",
+          "resolved": false
+        },
+        {
+          "id": "QA-2",
+          "text": "Manual checks M-1..M-5 (real terminal, incl. real Ctrl+C) pending - Pino to run and report results",
+          "raised": "2026-10-01",
+          "resolved": true,
+          "resolution": "Pino ran M-1..M-5 in a real Windows terminal: all pass",
+          "resolved_on": "2026-10-01"
+        }
+      ]
     },
     "review": {
       "status": "not_started",
@@ -348,6 +374,63 @@
     },
     {
       "ts": "2026-10-01T21:36:26-07:00",
+      "event": "status_draft",
+      "phase": "qa"
+    },
+    {
+      "ts": "2026-10-01T21:38:18-07:00",
+      "event": "issue_added",
+      "phase": "qa",
+      "note": "QA-1: GAP-1: after Ctrl+D/Ctrl+Z or Ctrl+C, 'Goodbye.' prints on the same line as the prompt. Accept as-is, or reopen Requirements to require it on its own line?"
+    },
+    {
+      "ts": "2026-10-01T21:38:18-07:00",
+      "event": "issue_added",
+      "phase": "qa",
+      "note": "QA-2: Manual checks M-1..M-5 (real terminal, incl. real Ctrl+C) pending - Pino to run and report results"
+    },
+    {
+      "ts": "2026-10-01T21:38:19-07:00",
+      "event": "status_in_review",
+      "phase": "qa"
+    },
+    {
+      "ts": "2026-10-01T21:39:47-07:00",
+      "event": "issue_resolved",
+      "phase": "qa",
+      "note": "QA-2: Pino ran M-1..M-5 in a real Windows terminal: all pass"
+    },
+    {
+      "ts": "2026-10-01T21:39:48-07:00",
+      "event": "reopened",
+      "phase": "requirements",
+      "note": "GAP-1 (QA-1): PO decided 'Goodbye.' must appear on its own line after Ctrl+D/Ctrl+Z or Ctrl+C at a prompt"
+    },
+    {
+      "ts": "2026-10-01T21:39:57-07:00",
+      "event": "status_draft",
+      "phase": "requirements"
+    },
+    {
+      "ts": "2026-10-01T21:40:12-07:00",
+      "event": "issue_resolved",
+      "phase": "requirements",
+      "note": "REQ-4: Pino: fix it. Added AC-5.4 (Goodbye on its own line after EOF/Ctrl+C)"
+    },
+    {
+      "ts": "2026-10-01T21:40:13-07:00",
+      "event": "status_in_review",
+      "phase": "requirements"
+    },
+    {
+      "ts": "2026-10-01T21:40:57-07:00",
+      "event": "approved",
+      "phase": "requirements",
+      "by": "Pino",
+      "note": "v0.2: AC-5.4 added from QA GAP-1"
+    },
+    {
+      "ts": "2026-10-01T21:42:55-07:00",
       "event": "status_draft",
       "phase": "qa"
     }
