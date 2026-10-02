@@ -3,7 +3,7 @@
   "project": "Tic tac toe game",
   "slug": "tic-tac-toe-game",
   "created": "2026-10-01T18:59:17-07:00",
-  "updated": "2026-10-01T21:51:16-07:00",
+  "updated": "2026-10-01T21:54:47-07:00",
   "approvers": {
     "product_owner": "Pino",
     "tech_lead": "Pino",
@@ -203,8 +203,10 @@
       "open_issues": []
     },
     "operate": {
-      "status": "not_started",
-      "artifacts": [],
+      "status": "in_review",
+      "artifacts": [
+        "docs/09-operate/monitoring.md"
+      ],
       "approved_by": null,
       "approved_on": null,
       "open_issues": []
@@ -541,6 +543,16 @@
       "phase": "release",
       "by": "Pino",
       "note": "GO for v1.0.0"
+    },
+    {
+      "ts": "2026-10-01T21:54:26-07:00",
+      "event": "status_draft",
+      "phase": "operate"
+    },
+    {
+      "ts": "2026-10-01T21:54:47-07:00",
+      "event": "status_in_review",
+      "phase": "operate"
     }
   ]
 }
