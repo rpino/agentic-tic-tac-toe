@@ -28,12 +28,13 @@ def play_game(input_fn, output_fn):
             return "quit"
         try:
             idx = game.parse_cell(text)
+        except ValueError:
+            output_fn(INVALID_INPUT)
+            continue
+        try:
             board = game.apply_move(board, idx, player)
         except game.CellTaken:
             output_fn(CELL_TAKEN.format(n=idx + 1))
-            continue
-        except ValueError:
-            output_fn(INVALID_INPUT)
             continue
         output_fn(game.render(board))
         result = game.outcome(board)
@@ -63,8 +64,11 @@ def main(input_fn=input, output_fn=print):
     End of input and Ctrl+C at any prompt also end the session (AC-5.2, AC-5.3).
     """
     try:
-        while play_game(input_fn, output_fn) == "over" and ask_play_again(input_fn, output_fn):
-            pass
+        while True:
+            if play_game(input_fn, output_fn) == "quit":
+                break
+            if not ask_play_again(input_fn, output_fn):
+                break
     except (EOFError, KeyboardInterrupt):
         # The cursor is still on the prompt line, so end it first (AC-5.4).
         output_fn("")

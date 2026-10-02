@@ -68,6 +68,7 @@ In memory only — no persistence.
 - **Messages** (the board, errors, results, "Goodbye.") go through `output_fn`, one call per message.
 - **Input handling order in `play_game`:** trim the input → check for `q`/`Q` → `parse_cell` → `apply_move`. So `" q "` quits (AC-2.3, AC-5.1).
 - **After a rejected move**, the CLI prints only the error message and prompts the same player again. It doesn't redraw the board, because the board hasn't changed (AC-3.3).
+- **On end of input or Ctrl+C**, `main` prints an empty line before "Goodbye.", because the cursor is still on the prompt line (AC-5.4).
 
 ### 3.4 Main flow
 ```mermaid
@@ -121,6 +122,7 @@ No network, file or environment access; only stdin/stdout (NFR-3). No personal d
 | AC-4.4 | `cli.main` | Game over → play-again prompt |
 | AC-5.1 | `cli.play_game` | |
 | AC-5.2, AC-5.3 | `cli.main` exception handling | |
+| AC-5.4 | `cli.main` exception handling | Prints a blank line before "Goodbye." on end of input or Ctrl+C (added from QA GAP-1, REQ-4) |
 | AC-6.1 – AC-6.4 | `cli.ask_play_again`, `cli.main` | |
 | NFR-1 | Whole program | stdlib only |
 | NFR-2 | ADR-001, ADR-002 | Injected `input_fn`/`output_fn` |

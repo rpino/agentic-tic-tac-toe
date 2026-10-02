@@ -2,22 +2,14 @@
 
 import ast
 import os
-import subprocess
 import sys
 import unittest
 
+from tests.helpers import ROOT, run_main, run_program
 from tictactoe import cli, game
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PKG = os.path.join(ROOT, "tictactoe")
 SOURCES = [os.path.join(PKG, f) for f in sorted(os.listdir(PKG)) if f.endswith(".py")]
-
-
-def run_program(stdin_text):
-    return subprocess.run(
-        [sys.executable, "-m", "tictactoe"],
-        input=stdin_text, capture_output=True, text=True, cwd=ROOT, timeout=10,
-    )
 
 
 class TestExactTranscript(unittest.TestCase):
@@ -44,14 +36,8 @@ class TestMultiGame(unittest.TestCase):
         replies = ["1", "4", "2", "5", "3", "y",   # game 1: X wins
                    "4", "1", "5", "2", "9", "3",   # game 2: O wins top row
                    "n"]
-        prompts = []
-        output = []
-
-        def fake_input(prompt):
-            prompts.append(prompt)
-            return replies.pop(0)
-
-        code = cli.main(fake_input, output.append)
+        code, io = run_main(replies)
+        output = io.output
         self.assertEqual(code, 0)
         self.assertEqual([m for m in output if m.endswith("wins!")], ["Player X wins!", "Player O wins!"])
         self.assertEqual(output[-1], "Goodbye.")
@@ -61,17 +47,8 @@ class TestGoodbyeOwnLine(unittest.TestCase):
     """AC-5.4 (from QA GAP-1): after EOF/Ctrl+C, Goodbye. is on its own line."""
 
     def run_main(self, replies):
-        replies = list(replies)
-        output = []
-
-        def fake_input(prompt):
-            reply = replies.pop(0)
-            if isinstance(reply, BaseException):
-                raise reply
-            return reply
-
-        code = cli.main(fake_input, output.append)
-        return code, output
+        code, io = run_main(replies)
+        return code, io.output
 
     def test_ac_5_4_newline_before_goodbye_on_eof_or_ctrl_c(self):
         x_wins = ["1", "4", "2", "5", "3"]

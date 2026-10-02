@@ -1,25 +1,7 @@
 import unittest
 
+from tests.helpers import FakeIO, run_main, run_program
 from tictactoe import cli, game
-
-
-class FakeIO:
-    """Scripted input_fn that records prompts, and an output_fn that collects messages."""
-
-    def __init__(self, replies):
-        self.replies = list(replies)
-        self.prompts = []
-        self.output = []
-
-    def input_fn(self, prompt):
-        self.prompts.append(prompt)
-        reply = self.replies.pop(0)
-        if isinstance(reply, BaseException):
-            raise reply
-        return reply
-
-    def output_fn(self, message):
-        self.output.append(message)
 
 
 def prompt_for(player):
@@ -106,12 +88,6 @@ X_WINS = ["1", "4", "2", "5", "3"]
 PLAY_AGAIN = "Play again? (y/n): "
 
 
-def run_main(replies):
-    io = FakeIO(replies)
-    code = cli.main(io.input_fn, io.output_fn)
-    return code, io
-
-
 class TestMain(unittest.TestCase):
     def test_ac_4_4_game_end_goes_to_play_again_prompt(self):
         _, io = run_main(X_WINS + ["n"])
@@ -164,26 +140,15 @@ class TestMain(unittest.TestCase):
 class TestEntryPoint(unittest.TestCase):
     """Smoke test: the real program via python -m tictactoe."""
 
-    def run_program(self, stdin_text):
-        import os
-        import subprocess
-        import sys
-
-        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        return subprocess.run(
-            [sys.executable, "-m", "tictactoe"],
-            input=stdin_text, capture_output=True, text=True, cwd=root, timeout=10,
-        )
-
     def test_full_game_then_quit(self):
-        proc = self.run_program("1\n4\n2\n5\n3\nn\n")
+        proc = run_program("1\n4\n2\n5\n3\nn\n")
         self.assertEqual(proc.returncode, 0)
         self.assertIn("Player X wins!", proc.stdout)
         self.assertIn("Goodbye.", proc.stdout)
         self.assertNotIn("Traceback", proc.stderr)
 
     def test_ac_5_2_eof_exits_cleanly(self):
-        proc = self.run_program("")
+        proc = run_program("")
         self.assertEqual(proc.returncode, 0)
         self.assertIn("Goodbye.", proc.stdout)
         self.assertNotIn("Traceback", proc.stderr)
